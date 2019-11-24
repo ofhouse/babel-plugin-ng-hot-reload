@@ -2,16 +2,24 @@
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+
 const config = require('../webpack.config.js');
+
+const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+const PORT = parseInt(process.env.PORT, 10) || 3000;
+const host = process.env.HOST || '0.0.0.0';
 
 new WebpackDevServer(webpack(config), {
   publicPath: '/',
   hot: true,
+  host,
+  https: protocol === 'https',
   historyApiFallback: true,
-}).listen(8080, 'localhost', function(err, result) {
+  disableHostCheck: true,
+}).listen(PORT, host, function(err, result) {
   if (err) {
     return console.log(err);
   }
 
-  console.log('Listening localhost:8080');
+  console.log(`Listening ${host}:${PORT}`);
 });

@@ -9,9 +9,10 @@ const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development
 var entry = ['./src/index.js'];
 
 if (mode === 'development') {
-  entry = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server'].concat(
-    entry
-  );
+  entry = [
+    `${require.resolve('webpack-dev-server/client')}?/`,
+    require.resolve('webpack/hot/dev-server'),
+  ].concat(entry);
 }
 
 module.exports = {
