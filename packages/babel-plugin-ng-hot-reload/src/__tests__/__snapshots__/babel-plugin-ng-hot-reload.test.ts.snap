@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ngHotReloadPlugin default export class 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
+const {
+  $$__export__default
+} = function (__ngHotReloadLoaderAngularGlobal) {
+  var $$__exports__;
+  var angular = module.hot ? function () {
+    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: Boolean(false),
+      preserveState: Boolean(false)
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    $$__exports__ = function () {
+      /* ng-hot-reload-loader end*/
+      class Test {
+        constructor() {}
+
+      }
+
+      return {
+        $$__export__default: Test
+      };
+      /* ng-hot-reload-loader */
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return $$__exports__;
+}((require(\\"angular\\"), angular));
+/* ng-hot-reload-loader end */
+
+
+export { $$__export__default as default };",
+}
+`;
+
+exports[`ngHotReloadPlugin default export identifier 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
+const {
+  $$__export__default
+} = function (__ngHotReloadLoaderAngularGlobal) {
+  var $$__exports__;
+  var angular = module.hot ? function () {
+    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: Boolean(false),
+      preserveState: Boolean(false)
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    $$__exports__ = function () {
+      /* ng-hot-reload-loader end*/
+      const foo = 'bar';
+      return {
+        $$__export__default: foo
+      };
+      /* ng-hot-reload-loader */
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return $$__exports__;
+}((require(\\"angular\\"), angular));
+/* ng-hot-reload-loader end */
+
+
+export { $$__export__default as default };",
+}
+`;
+
+exports[`ngHotReloadPlugin default export member expression 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
+const {
+  $$__export__default
+} = function (__ngHotReloadLoaderAngularGlobal) {
+  var $$__exports__;
+  var angular = module.hot ? function () {
+    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: Boolean(false),
+      preserveState: Boolean(false)
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    $$__exports__ = function () {
+      /* ng-hot-reload-loader end*/
+      const obj = {
+        foo: 'bar'
+      };
+      return {
+        $$__export__default: obj.foo
+      };
+      /* ng-hot-reload-loader */
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return $$__exports__;
+}((require(\\"angular\\"), angular));
+/* ng-hot-reload-loader end */
+
+
+export { $$__export__default as default };",
+}
+`;
+
+exports[`ngHotReloadPlugin named export class declaration 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
+const {
+  $$__export__Foo
+} = function (__ngHotReloadLoaderAngularGlobal) {
+  var $$__exports__;
+  var angular = module.hot ? function () {
+    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: Boolean(false),
+      preserveState: Boolean(false)
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    $$__exports__ = function () {
+      /* ng-hot-reload-loader end*/
+      class Foo {}
+
+      ;
+      return {
+        $$__export__Foo: Foo
+      };
+      /* ng-hot-reload-loader */
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return $$__exports__;
+}((require(\\"angular\\"), angular));
+/* ng-hot-reload-loader end */
+
+
+export { $$__export__Foo as Foo };",
+}
+`;
+
+exports[`ngHotReloadPlugin named export variable declaration 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
+const {
+  $$__export__foo,
+  $$__export__bar
+} = function (__ngHotReloadLoaderAngularGlobal) {
+  var $$__exports__;
+  var angular = module.hot ? function () {
+    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: Boolean(false),
+      preserveState: Boolean(false)
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    $$__exports__ = function () {
+      /* ng-hot-reload-loader end*/
+      const foo = 'bar',
+            bar = 'foo';
+      return {
+        $$__export__foo: foo,
+        $$__export__bar: bar
+      };
+      /* ng-hot-reload-loader */
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return $$__exports__;
+}((require(\\"angular\\"), angular));
+/* ng-hot-reload-loader end */
+
+
+export { $$__export__foo as foo, $$__export__bar as bar };",
+}
+`;
+
+exports[`ngHotReloadPlugin named exports 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
+const {
+  $$__export__foo,
+  $$__export__bar2,
+  $$__export__default
+} = function (__ngHotReloadLoaderAngularGlobal) {
+  var $$__exports__;
+  var angular = module.hot ? function () {
+    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: Boolean(false),
+      preserveState: Boolean(false)
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    $$__exports__ = function () {
+      /* ng-hot-reload-loader end*/
+      const foo = 'bar';
+      const bar = 'foo';
+      return {
+        $$__export__foo: foo,
+        $$__export__bar2: bar,
+        $$__export__default: foo
+      };
+      /* ng-hot-reload-loader */
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return $$__exports__;
+}((require(\\"angular\\"), angular));
+/* ng-hot-reload-loader end */
+
+
+export { $$__export__foo as foo, $$__export__bar2 as bar2, $$__export__default as default };",
+}
+`;

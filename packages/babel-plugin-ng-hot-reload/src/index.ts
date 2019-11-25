@@ -1,4 +1,9 @@
-export default function(babel) {
+import * as Babel from '@babel/core';
+
+type BabelT = typeof Babel;
+type PluginOptions = {};
+
+export default function(babel: BabelT, options: PluginOptions = {}) {
   const { types: t } = babel;
 
   const state = {
@@ -145,11 +150,71 @@ const { } = (function(__ngHotReloadLoaderAngularGlobal) {
         path.remove();
       },
 
+      ExportNamedDeclaration(path) {
+        const declaration = path.get('declaration');
+        if (declaration.node !== null) {
+          if (declaration.type === 'VariableDeclaration') {
+            // Export variable declaration
+            // e.g:
+            // export const foo = 'bar',
+            //              bar = 'foo';
+            const { declarations } = declaration.node;
+            declarations.forEach(declaration => {
+              const identifier = declaration.id;
+              state.topLevelExports.set(identifier.name, identifier);
+            });
+          } else {
+            // Export right before declaration
+            // e.g:
+            // export class Foo {};
+            const identifier = declaration.get('id').node;
+            state.topLevelExports.set(identifier.name, identifier);
+          }
+          // Replace the export declaration with the actual declaration
+          path.replaceWith(declaration);
+        } else {
+          // Export specifier
+          // e.g:
+          // const foo = 'bar';
+          // const bar = 'foo';
+          // export { foo, bar as bar2 };
+          const { specifiers } = path.node;
+          if (specifiers && specifiers.length > 0) {
+            specifiers.forEach(({ local, exported }) => {
+              state.topLevelExports.set(exported.name, local);
+            });
+          }
+          // Remove the export
+          path.remove();
+        }
+      },
+
       ExportDefaultDeclaration(path) {
-        const node = path.node;
-        const name = node.declaration.name;
-        state.topLevelExports.set('default', path.get('declaration').node);
-        path.remove();
+        const declaration = path.get('declaration');
+        if (declaration.type === 'Identifier' || declaration.type === 'MemberExpression') {
+          // If export is a simple identifier we can use the node directly
+          //
+          // Identifier:
+          // const foo = 'bar';
+          // export default foo;
+          //
+          // MemberExpression:
+          // const obj = {
+          //   foo: 'bar'
+          // };
+          // export default obj.foo;
+          state.topLevelExports.set('default', declaration.node);
+          // Remove the default export
+          path.remove();
+        } else {
+          // If we have a declaration in the default export we have to get the
+          // identifier through the `id` property
+          // e.g:
+          // export default class Foo {}
+          state.topLevelExports.set('default', declaration.get('id').node);
+          // Replace the export declaration with the actual declaration
+          path.replaceWith(declaration);
+        }
       },
     },
   };

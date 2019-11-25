@@ -1,13 +1,23 @@
 {
   "name": "babel-plugin-ng-hot-reload",
-  "version": "2.1.0-alpha001",
+  "version": "2.1.0-alpha002",
   "main": "dist/index.js",
+  "author": {
+    "name": "Felix Haus",
+    "email": "felixhaus@gmail.com",
+    "url": "https://felix.house/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ofhouse/babel-plugin-ng-hot-reload.git"
+  },
   "license": "MIT",
   "scripts": {
-    "prepack": "tsc",
-    "build": "tsc",
+    "prepack": "cp ../../README.md ../../LICENSE ./ && tsc --p tsconfig.build.json",
+    "postpack": "rm ./README.md ./LICENSE",
+    "build": "tsc --p tsconfig.build.json",
     "watch": "tsc -w",
-    "test": "mocha"
+    "test": "jest"
   },
   "dependencies": {
     "ng-hot-reload-core": "2.1.0"
@@ -16,8 +26,13 @@
     "@babel/core": ">=7"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.4",
     "@types/babel__core": "^7.1.3",
+    "@types/jest": "^24.0.23",
     "@types/node": "^12.12.12",
+    "jest": "^24.9.0",
+    "jest-snapshot-serializer-raw": "^1.1.0",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.7.2"
   }
 }
