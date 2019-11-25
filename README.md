@@ -1,6 +1,6 @@
 # 🔥 babel-plugin-ng-hot-reload
 
-A babel plugin which enables hot module replacement in angular.js applications.<br />
+A babel plugin which enables hot module replacement in AngularJS applications.<br />
 The plugin is based on the [ng-hot-reload](https://github.com/noppa/ng-hot-reload) webpack loader but is rewritten as babel plugin so that it is compatible with es-module syntax and every bundler which supports the hot-replacement API (e.g. [webpack](https://webpack.js.org/) or [parcel](https://parceljs.org/)).
 
 ## Getting started
@@ -30,8 +30,8 @@ module.exports = {
       'babel-plugin-ng-hot-reload',
       {
         angularGlobal: false,
-        forceRefresh: false,
-        preserveState: false,
+        forceRefresh: true,
+        preserveState: true,
       },
     ],
   ],
@@ -40,12 +40,18 @@ module.exports = {
 
 ### Options
 
+| Option          | Default                   | Description                                                                                                                                                                                                                                                                                                                                                                  |
+| --------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `angularGlobal` | `false` (false or string) | Define whether angular is used as global variable. Set to `'angular'` when `angular` is your global variable.                                                                                                                                                                                                                                                                |
+| `forceRefresh`  | `true` (boolean)          | Whether to reload window automatically when a change in source files can't be hot-reloaded. Note that Webpack DevServer also has its own option hotOnly, which should also be configured correctly to get the behaviour you want when hot reloading fails.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options))                              |
+| `preserveState` | `true` (boolean)          | If true, the library attempts to preserve some state in scope and controller instances when they are reloaded. Preserving state is an experimental feature and quite "hackish" so it may cause problems in some cases. Setting this to `false` might help if you run into weird errors.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options)) |
+
 ## FAQ
 
-### Use it together with `@babel/preset-env`
+### Use together with `@babel/preset-env`
 
-This plugin should be work nicly together with the `@babel/preset-env` plugin.
-In opposite to the original webpack-loader it's **not** required to transpile your code to commonjs modules:
+This plugin should work nicely together with the [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) plugin.
+In opposite to the original ng-hot-reload webpack-loader it's **not** required to transpile your code to commonjs modules:
 
 ```js
 module.exports = {
@@ -53,7 +59,7 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        modules: false, // Don't transpile the modules
+        modules: false, // Don't transpile the modules (default)
       },
     ],
   ],
@@ -63,7 +69,7 @@ module.exports = {
 
 For an example check out the [Webpack / Javascript example](./examples/javascript-webpack/).
 
-### Use together with ngAnnotate
+### Use together with `ngAnnotate`
 
 When you are using this plugin together with [`babel-plugin-angularjs-annotate`](https://github.com/schmod/babel-plugin-angularjs-annotate) make sure that the ngAnnotate plugin is added before this plugin in your `.babelrc.js`:
 

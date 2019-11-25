@@ -2,33 +2,31 @@
 
 exports[`ngHotReloadPlugin default export class 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
-const {
-  $$__export__default
+  Symbol(jest-snapshot-serializer-raw): "const {
+  __ngHotReload_default
 } = function (__ngHotReloadLoaderAngularGlobal) {
-  var $$__exports__;
+  var __ngHotReload_exports__;
+
   var angular = module.hot ? function () {
     var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
-      forceRefresh: Boolean(false),
-      preserveState: Boolean(false)
+      forceRefresh: true,
+      preserveState: true
     });
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    $$__exports__ = function () {
-      /* ng-hot-reload-loader end*/
+    __ngHotReload_exports__ = function () {
       class Test {
         constructor() {}
 
       }
 
       return {
-        $$__export__default: Test
+        __ngHotReload_default: Test
       };
-      /* ng-hot-reload-loader */
     }();
   } finally {
     (function () {
@@ -42,40 +40,36 @@ const {
     })();
   }
 
-  return $$__exports__;
+  return __ngHotReload_exports__;
 }((require(\\"angular\\"), angular));
-/* ng-hot-reload-loader end */
 
-
-export { $$__export__default as default };",
+export { __ngHotReload_default as default };",
 }
 `;
 
 exports[`ngHotReloadPlugin default export identifier 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
-const {
-  $$__export__default
+  Symbol(jest-snapshot-serializer-raw): "const {
+  __ngHotReload_default
 } = function (__ngHotReloadLoaderAngularGlobal) {
-  var $$__exports__;
+  var __ngHotReload_exports__;
+
   var angular = module.hot ? function () {
     var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
-      forceRefresh: Boolean(false),
-      preserveState: Boolean(false)
+      forceRefresh: true,
+      preserveState: true
     });
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    $$__exports__ = function () {
-      /* ng-hot-reload-loader end*/
+    __ngHotReload_exports__ = function () {
       const foo = 'bar';
       return {
-        $$__export__default: foo
+        __ngHotReload_default: foo
       };
-      /* ng-hot-reload-loader */
     }();
   } finally {
     (function () {
@@ -89,42 +83,38 @@ const {
     })();
   }
 
-  return $$__exports__;
+  return __ngHotReload_exports__;
 }((require(\\"angular\\"), angular));
-/* ng-hot-reload-loader end */
 
-
-export { $$__export__default as default };",
+export { __ngHotReload_default as default };",
 }
 `;
 
 exports[`ngHotReloadPlugin default export member expression 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
-const {
-  $$__export__default
+  Symbol(jest-snapshot-serializer-raw): "const {
+  __ngHotReload_default
 } = function (__ngHotReloadLoaderAngularGlobal) {
-  var $$__exports__;
+  var __ngHotReload_exports__;
+
   var angular = module.hot ? function () {
     var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
-      forceRefresh: Boolean(false),
-      preserveState: Boolean(false)
+      forceRefresh: true,
+      preserveState: true
     });
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    $$__exports__ = function () {
-      /* ng-hot-reload-loader end*/
+    __ngHotReload_exports__ = function () {
       const obj = {
         foo: 'bar'
       };
       return {
-        $$__export__default: obj.foo
+        __ngHotReload_default: obj.foo
       };
-      /* ng-hot-reload-loader */
     }();
   } finally {
     (function () {
@@ -138,42 +128,38 @@ const {
     })();
   }
 
-  return $$__exports__;
+  return __ngHotReload_exports__;
 }((require(\\"angular\\"), angular));
-/* ng-hot-reload-loader end */
 
-
-export { $$__export__default as default };",
+export { __ngHotReload_default as default };",
 }
 `;
 
 exports[`ngHotReloadPlugin named export class declaration 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
-const {
-  $$__export__Foo
+  Symbol(jest-snapshot-serializer-raw): "const {
+  __ngHotReload_Foo
 } = function (__ngHotReloadLoaderAngularGlobal) {
-  var $$__exports__;
+  var __ngHotReload_exports__;
+
   var angular = module.hot ? function () {
     var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
-      forceRefresh: Boolean(false),
-      preserveState: Boolean(false)
+      forceRefresh: true,
+      preserveState: true
     });
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    $$__exports__ = function () {
-      /* ng-hot-reload-loader end*/
+    __ngHotReload_exports__ = function () {
       class Foo {}
 
       ;
       return {
-        $$__export__Foo: Foo
+        __ngHotReload_Foo: Foo
       };
-      /* ng-hot-reload-loader */
     }();
   } finally {
     (function () {
@@ -187,43 +173,39 @@ const {
     })();
   }
 
-  return $$__exports__;
+  return __ngHotReload_exports__;
 }((require(\\"angular\\"), angular));
-/* ng-hot-reload-loader end */
 
-
-export { $$__export__Foo as Foo };",
+export { __ngHotReload_Foo as Foo };",
 }
 `;
 
 exports[`ngHotReloadPlugin named export variable declaration 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
-const {
-  $$__export__foo,
-  $$__export__bar
+  Symbol(jest-snapshot-serializer-raw): "const {
+  __ngHotReload_foo,
+  __ngHotReload_bar
 } = function (__ngHotReloadLoaderAngularGlobal) {
-  var $$__exports__;
+  var __ngHotReload_exports__;
+
   var angular = module.hot ? function () {
     var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
-      forceRefresh: Boolean(false),
-      preserveState: Boolean(false)
+      forceRefresh: true,
+      preserveState: true
     });
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    $$__exports__ = function () {
-      /* ng-hot-reload-loader end*/
+    __ngHotReload_exports__ = function () {
       const foo = 'bar',
             bar = 'foo';
       return {
-        $$__export__foo: foo,
-        $$__export__bar: bar
+        __ngHotReload_foo: foo,
+        __ngHotReload_bar: bar
       };
-      /* ng-hot-reload-loader */
     }();
   } finally {
     (function () {
@@ -237,45 +219,41 @@ const {
     })();
   }
 
-  return $$__exports__;
+  return __ngHotReload_exports__;
 }((require(\\"angular\\"), angular));
-/* ng-hot-reload-loader end */
 
-
-export { $$__export__foo as foo, $$__export__bar as bar };",
+export { __ngHotReload_foo as foo, __ngHotReload_bar as bar };",
 }
 `;
 
 exports[`ngHotReloadPlugin named exports 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "/* ng-hot-reload-loader */
-const {
-  $$__export__foo,
-  $$__export__bar2,
-  $$__export__default
+  Symbol(jest-snapshot-serializer-raw): "const {
+  __ngHotReload_foo,
+  __ngHotReload_bar2,
+  __ngHotReload_default
 } = function (__ngHotReloadLoaderAngularGlobal) {
-  var $$__exports__;
+  var __ngHotReload_exports__;
+
   var angular = module.hot ? function () {
     var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
-      forceRefresh: Boolean(false),
-      preserveState: Boolean(false)
+      forceRefresh: true,
+      preserveState: true
     });
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    $$__exports__ = function () {
-      /* ng-hot-reload-loader end*/
+    __ngHotReload_exports__ = function () {
       const foo = 'bar';
       const bar = 'foo';
       return {
-        $$__export__foo: foo,
-        $$__export__bar2: bar,
-        $$__export__default: foo
+        __ngHotReload_foo: foo,
+        __ngHotReload_bar2: bar,
+        __ngHotReload_default: foo
       };
-      /* ng-hot-reload-loader */
     }();
   } finally {
     (function () {
@@ -289,11 +267,9 @@ const {
     })();
   }
 
-  return $$__exports__;
+  return __ngHotReload_exports__;
 }((require(\\"angular\\"), angular));
-/* ng-hot-reload-loader end */
 
-
-export { $$__export__foo as foo, $$__export__bar2 as bar2, $$__export__default as default };",
+export { __ngHotReload_foo as foo, __ngHotReload_bar2 as bar2, __ngHotReload_default as default };",
 }
 `;

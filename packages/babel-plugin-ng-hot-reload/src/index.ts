@@ -1,47 +1,49 @@
 import * as Babel from '@babel/core';
 
 type BabelT = typeof Babel;
-type PluginOptions = {};
+type PluginOptions = {
+  angularGlobal: false | string;
+  forceRefresh: boolean;
+  preserveState: boolean;
+};
 
-export default function(babel: BabelT, options: PluginOptions = {}) {
-  const { types: t } = babel;
+export default function(
+  babel: BabelT,
+  { angularGlobal = false, forceRefresh = true, preserveState = true }: PluginOptions
+) {
+  const { types: t, template } = babel;
 
-  const state = {
+  let state = {
     topLevelImports: new Set(),
     topLevelExports: new Map(),
+    angularUseDetected: false,
   };
 
   const corePath = JSON.stringify(require.resolve('ng-hot-reload-core'));
   // const corePath = "testPath";
   const requireAngular = '(require("angular"), angular)';
+  const EXPORTS_PREFIX = '__ngHotReload_';
+  const INNER_EXPORT_VARIBALE = '__ngHotReload_exports__';
 
-  const forceRefresh = false;
-  const preserveState = false;
-  const SOURCE_PLACEHOLDER = '__SOURCE_PLACEHOLDER__';
-  const EXPORTS_PLACEHOLDER = '__EXPORTS_PLACEHOLDER__';
-  const EXPORTS_PREFIX = '$$__export__';
-
-  const hotReloadTemplate = `
-/* ng-hot-reload-loader */
-const { } = (function(__ngHotReloadLoaderAngularGlobal) {
-  var $$__exports__;
+  const buildHotReloadTemplate = template(`
+/* babel-plugin-ng-hot-reload */
+const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
+  var ${INNER_EXPORT_VARIBALE};
   var angular = module.hot ? (function() {
     var loader = require(${corePath});
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
-      forceRefresh: Boolean(${forceRefresh}),
-      preserveState: Boolean(${preserveState})
+      forceRefresh: ${JSON.stringify(forceRefresh)},
+      preserveState: ${JSON.stringify(preserveState)}
     });
   })() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    $$__exports__ = (function() {
-
-      /* ng-hot-reload-loader end*/
-      '${SOURCE_PLACEHOLDER}';
-      '${EXPORTS_PLACEHOLDER}';
-      /* ng-hot-reload-loader */
-
+    ${INNER_EXPORT_VARIBALE} = (function() {
+      /* babel-plugin-ng-hot-reload end*/
+      %%source%%
+      /* babel-plugin-ng-hot-reload */
+      %%exports%%
     })();
   } finally {
     (function() {
@@ -54,17 +56,18 @@ const { } = (function(__ngHotReloadLoaderAngularGlobal) {
       }
     })();
   }
-  return $$__exports__;
+  return ${INNER_EXPORT_VARIBALE};
 })(${requireAngular});
-/* ng-hot-reload-loader end */
-`;
+/* babel-plugin-ng-hot-reload end */
+`);
 
   return {
-    name: 'ng-hot-reload', // not required
+    name: 'ng-hot-reload',
     post() {
       // Clear the storage after each file
       state.topLevelImports.clear();
       state.topLevelExports.clear();
+      state.angularUseDetected = false;
     },
 
     visitor: {
@@ -74,69 +77,69 @@ const { } = (function(__ngHotReloadLoaderAngularGlobal) {
             node: { body: sourceBody },
           } = path;
 
-          const parsedTemplate = babel.parse(hotReloadTemplate);
-          babel.traverse(parsedTemplate, {
-            Directive(path) {
-              const { node } = path;
-
-              // Add the source code to the SOURCE_PLACEHOLDER
-              if (
-                node.value &&
-                node.value.type === 'DirectiveLiteral' &&
-                node.value.value === SOURCE_PLACEHOLDER
-              ) {
-                path.replaceWithMultiple(sourceBody);
-              }
-
-              if (
-                node.value &&
-                node.value.type === 'DirectiveLiteral' &&
-                node.value.value === EXPORTS_PLACEHOLDER
-              ) {
-                const __exports = [];
-                state.topLevelExports.forEach((value, key) => {
-                  __exports.push(t.objectProperty(t.identifier(`${EXPORTS_PREFIX}${key}`), value));
-                });
-
-                path.replaceWith(t.returnStatement(t.objectExpression(__exports)));
-              }
-            },
-
-            VariableDeclaration(path) {
-              if (path.parent.type === 'Program') {
-                const __exports = [];
-                state.topLevelExports.forEach((_, key) => {
-                  __exports.push(
-                    t.objectProperty(
-                      t.identifier(`${EXPORTS_PREFIX}${key}`),
-                      t.identifier(`${EXPORTS_PREFIX}${key}`),
-                      false,
-                      true
-                    )
-                  );
-                });
-
-                path
-                  .get('declarations')[0]
-                  .get('id')
-                  .replaceWith(t.objectPattern(__exports));
-              }
-            },
-          });
-
-          const __exports = [];
+          // Adds a return statement to the inner wrapper function which
+          // contains the exports from the module
+          // Also adds an destructor to the outside of the wrapper to make the
+          // exports from inside the wrapper avaiable in global scope
+          //
+          // export default Controller;
+          // export const namedExport
+          //
+          // == becomes ==
+          //
+          // Appended to wrapped source:
+          // --
+          // return {
+          //   __export_default: Controller,
+          //   __export_namedExport: namedExport
+          // }
+          //
+          // Added to outer wrapper:
+          // --
+          // const { __export_default, __export_namedExport } = (function() {...})();
+          //
+          // Appended to template:
+          // --
+          // export {
+          //   __export_default as default,
+          //  __export_namedExport as namedExport
+          // };
+          const moduleExports = [];
+          const extractedExports = [];
+          const topLevelExports = [];
           state.topLevelExports.forEach((value, key) => {
-            __exports.push(
-              t.exportSpecifier(t.identifier(`${EXPORTS_PREFIX}${key}`), t.identifier(key))
+            const identifierKey = `${EXPORTS_PREFIX}${key}`;
+            // Properties of the return statement
+            moduleExports.push(t.objectProperty(t.identifier(identifierKey), value));
+            // Properties for the outer const destrcutor
+            extractedExports.push(
+              t.objectProperty(
+                t.identifier(identifierKey),
+                t.identifier(identifierKey),
+                false,
+                true
+              )
             );
+            // Restore the topLevelexports
+            topLevelExports.push(t.exportSpecifier(t.identifier(identifierKey), t.identifier(key)));
+          });
+          // Wrap the properties in return statement
+          const exportsAsReturnStatement = t.returnStatement(t.objectExpression(moduleExports));
+
+          // build the template
+          const hotReloadTemplateAst = buildHotReloadTemplate({
+            source: sourceBody,
+            exports: exportsAsReturnStatement,
+            extractedExports: t.objectPattern(extractedExports),
           });
 
-          const finalExports = t.exportNamedDeclaration(null, __exports);
-
-          const finalBody = [...state.topLevelImports.values(), parsedTemplate];
-          if (__exports.length) {
-            finalBody.push(finalExports);
-          }
+          const finalBody = [
+            ...state.topLevelImports.values(),
+            hotReloadTemplateAst,
+            topLevelExports.length > 0
+              ? t.exportNamedDeclaration(null, topLevelExports)
+              : undefined,
+          ].filter(Boolean);
 
           path.node.body = finalBody;
         },
