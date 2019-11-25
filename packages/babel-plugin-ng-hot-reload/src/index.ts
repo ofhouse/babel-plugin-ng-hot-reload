@@ -19,8 +19,7 @@ export default function(
     angularUseDetected: false,
   };
 
-  const corePath = JSON.stringify(require.resolve('ng-hot-reload-core'));
-  // const corePath = "testPath";
+  const corePath = 'ng-hot-reload-core';
   const requireAngular = '(require("angular"), angular)';
   const EXPORTS_PREFIX = '__ngHotReload_';
   const INNER_EXPORT_VARIBALE = '__ngHotReload_exports__';
@@ -30,7 +29,7 @@ export default function(
 const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
   var ${INNER_EXPORT_VARIBALE};
   var angular = module.hot ? (function() {
-    var loader = require(${corePath});
+    var loader = require(${JSON.stringify(corePath)});
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
       forceRefresh: ${JSON.stringify(forceRefresh)},

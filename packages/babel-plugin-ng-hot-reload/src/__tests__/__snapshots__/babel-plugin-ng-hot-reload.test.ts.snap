@@ -8,7 +8,7 @@ Object {
   var __ngHotReload_exports__;
 
   var angular = module.hot ? function () {
-    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+    var loader = require(\\"ng-hot-reload-core\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
@@ -55,7 +55,7 @@ Object {
   var __ngHotReload_exports__;
 
   var angular = module.hot ? function () {
-    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+    var loader = require(\\"ng-hot-reload-core\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
@@ -98,7 +98,7 @@ Object {
   var __ngHotReload_exports__;
 
   var angular = module.hot ? function () {
-    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+    var loader = require(\\"ng-hot-reload-core\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
@@ -143,7 +143,7 @@ Object {
   var __ngHotReload_exports__;
 
   var angular = module.hot ? function () {
-    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+    var loader = require(\\"ng-hot-reload-core\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
@@ -189,7 +189,7 @@ Object {
   var __ngHotReload_exports__;
 
   var angular = module.hot ? function () {
-    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+    var loader = require(\\"ng-hot-reload-core\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
@@ -236,7 +236,7 @@ Object {
   var __ngHotReload_exports__;
 
   var angular = module.hot ? function () {
-    var loader = require(\\"/Users/felix/code/babel-plugin-ng-hot-reload/node_modules/ng-hot-reload-core/dist/ng-hot-reload-core.js\\");
+    var loader = require(\\"ng-hot-reload-core\\");
 
     return loader.decorateAngular({
       angular: __ngHotReloadLoaderAngularGlobal,
