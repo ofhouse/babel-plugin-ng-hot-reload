@@ -83,6 +83,26 @@ describe('ngHotReloadPlugin', () => {
     ).toMatchSnapshot();
   });
 
+  test('Named export with source', () => {
+    expect(
+      transform(`
+      import * as angular from 'angular';
+
+      export { foo } from 'bar';
+    `)
+    ).toMatchSnapshot();
+  });
+
+  test('ExportAllDeclaration', () => {
+    expect(
+      transform(`
+      import * as angular from 'angular';
+
+      export * from 'foo';
+    `)
+    ).toMatchSnapshot();
+  });
+
   test('No code transformation should be done when no angular reference is present', () => {
     expect(
       transform(`

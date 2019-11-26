@@ -1,5 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ngHotReloadPlugin ExportAllDeclaration 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {} = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_exports__;
+
+  var angular = module.hot ? function () {
+    var loader = require(\\"ng-hot-reload-core\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: true,
+      preserveState: true
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    __ngHotReload_exports__ = function () {
+      return {};
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return __ngHotReload_exports__;
+}(require('angular'), angular);
+
+export * from 'foo';",
+}
+`;
+
+exports[`ngHotReloadPlugin Named export with source 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {} = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_exports__;
+
+  var angular = module.hot ? function () {
+    var loader = require(\\"ng-hot-reload-core\\");
+
+    return loader.decorateAngular({
+      angular: __ngHotReloadLoaderAngularGlobal,
+      forceRefresh: true,
+      preserveState: true
+    });
+  }() : __ngHotReloadLoaderAngularGlobal;
+
+  try {
+    __ngHotReload_exports__ = function () {
+      return {};
+    }();
+  } finally {
+    (function () {
+      if (module.hot && angular.__ngHotReload$didRegisterProviders) {
+        module.hot.accept(function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    })();
+  }
+
+  return __ngHotReload_exports__;
+}(require('angular'), angular);
+
+export { foo } from 'bar';",
+}
+`;
+
 exports[`ngHotReloadPlugin No code transformation should be done when no angular reference is present 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "const foo = 'bar';

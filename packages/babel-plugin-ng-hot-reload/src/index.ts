@@ -22,6 +22,7 @@ export default function(
   let state = {
     topLevelImports: new Set(),
     topLevelExports: new Map(),
+    topLevelExportModule: new Set(),
     pathsToRemove: new Set(),
     pathsToReplace: new Map(),
   };
@@ -142,6 +143,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
           ...state.topLevelImports.values(),
           hotReloadTemplateAst,
           topLevelExports.length > 0 ? t.exportNamedDeclaration(null, topLevelExports) : undefined,
+          ...state.topLevelExportModule.values(),
         ].filter(Boolean);
 
         path.node.body = finalBody;
@@ -163,6 +165,16 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
     },
 
     ExportNamedDeclaration(path) {
+      // Check if we have an export from a source
+      // e.g:
+      // export { foo } from 'bar';
+      if (path.node.source) {
+        // Same behaviour as ExportAllDeclaration
+        state.topLevelExportModule.add(path.node);
+        state.pathsToRemove.add(path);
+        return;
+      }
+
       const declaration = path.get('declaration');
       if (declaration.node !== null) {
         if (declaration.type === 'VariableDeclaration') {
@@ -228,6 +240,12 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
         state.pathsToReplace.set(path, declaration);
       }
     },
+
+    ExportAllDeclaration(path) {
+      // ExportAllDeclarations can be safely removed and later reapplied
+      state.topLevelExportModule.add(path.node);
+      state.pathsToRemove.add(path);
+    },
   };
 
   // When angular is used as global variable check for usage of the identifier
@@ -247,6 +265,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
       // Clear the storage after each file
       state.topLevelImports.clear();
       state.topLevelExports.clear();
+      state.topLevelExportModule.clear();
       state.pathsToRemove.clear();
       state.pathsToReplace.clear();
     },
