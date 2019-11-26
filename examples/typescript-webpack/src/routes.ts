@@ -1,14 +1,11 @@
 import { StateProvider } from '@uirouter/angularjs';
 
-import homeTemplate from './home.view.html';
-import { HomeController } from './home.controller';
+import { HomeViewComponentName } from './home.component';
 
 export function appRouter($stateProvider: StateProvider) {
   'ngInject';
   $stateProvider.state('home', {
     url: '',
-    template: homeTemplate,
-    controller: HomeController,
-    controllerAs: 'vm',
+    component: HomeViewComponentName,
   });
 }
