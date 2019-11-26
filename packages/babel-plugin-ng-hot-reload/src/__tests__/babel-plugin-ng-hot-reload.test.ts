@@ -82,4 +82,14 @@ describe('ngHotReloadPlugin', () => {
     `)
     ).toMatchSnapshot();
   });
+
+  test('No code transformation should be done when no angular reference is present', () => {
+    expect(
+      transform(`
+      const foo = 'bar';
+      const bar = 'foo';
+      export { foo, bar as bar2, foo as default };
+    `)
+    ).toMatchSnapshot();
+  });
 });

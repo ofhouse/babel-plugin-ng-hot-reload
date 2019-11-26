@@ -9,7 +9,7 @@ The plugin is based on the [ng-hot-reload](https://github.com/noppa/ng-hot-reloa
 >
 > - [Webpack / JavaScript demo on CodeSandbox ](https://codesandbox.io/s/github/ofhouse/babel-plugin-ng-hot-reload/tree/master/examples/javascript-webpack)
 > - [Webpack / TypeScript demo on CodeSandbox](https://codesandbox.io/s/github/ofhouse/babel-plugin-ng-hot-reload/tree/master/examples/typescript-webpack)
-> - [Parcel / TypeScript demo on CodeSandbox](https://codesandbox.io/s/github/ofhouse/babel-plugin-ng-hot-reload/tree/master/examples/typescript-parcel) (There are some issues, see: [FAQ](#known-issues-with-parcel))
+> - [Parcel / TypeScript demo on CodeSandbox](https://codesandbox.io/s/github/ofhouse/babel-plugin-ng-hot-reload/tree/master/examples/typescript-parcel) (There is an issue with HTML import, see: [FAQ](#known-issues-with-parcel))
 
 ```sh
 npm i -D babel-plugin-ng-hot-reload     # npm or
@@ -33,6 +33,7 @@ module.exports = {
         angularGlobal: false,
         forceRefresh: true,
         preserveState: true,
+        angularReference: "require('angular'), angular",
       },
     ],
   ],
@@ -41,11 +42,12 @@ module.exports = {
 
 ### Options
 
-| Option          | Default                   | Description                                                                                                                                                                                                                                                                                                                                                                  |
-| --------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `angularGlobal` | `false` (false or string) | Define whether angular is provided as global variable. Set to `'angular'` when `angular` is your global variable.                                                                                                                                                                                                                                                            |
-| `forceRefresh`  | `true` (boolean)          | Whether to reload window automatically when a change in source files can't be hot-reloaded. Note that Webpack DevServer also has its own option hotOnly, which should also be configured correctly to get the behaviour you want when hot reloading fails.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options))                              |
-| `preserveState` | `true` (boolean)          | If true, the library attempts to preserve some state in scope and controller instances when they are reloaded. Preserving state is an experimental feature and quite "hackish" so it may cause problems in some cases. Setting this to `false` might help if you run into weird errors.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options)) |
+| Option             | Default                                  | Description                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------ | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `angularGlobal`    | `false` (false or string)                | Define whether angular is provided as global variable. Set to `'angular'` when `angular` is your global variable.                                                                                                                                                                                                                                                            |
+| `forceRefresh`     | `true` (boolean)                         | Whether to reload window automatically when a change in source files can't be hot-reloaded. Note that Webpack DevServer also has its own option hotOnly, which should also be configured correctly to get the behaviour you want when hot reloading fails.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options))                              |
+| `preserveState`    | `true` (boolean)                         | If true, the library attempts to preserve some state in scope and controller instances when they are reloaded. Preserving state is an experimental feature and quite "hackish" so it may cause problems in some cases. Setting this to `false` might help if you run into weird errors.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options)) |
+| `angularReference` | `"require('angular'), angular"` (string) | JavaScript expression that will be evaluated to get a reference to angular.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options))                                                                                                                                                                                                             |
 
 ## FAQ
 
@@ -122,10 +124,9 @@ For an example check out the [Webpack / TypeScript example](./examples/typescrip
 Since this plugin only requires babel, you can use every build tool which supports hot-module-replacement.<br />
 You can check out the [Parcel / TypeScript example](./examples/typescript-parcel/) to see how it works with other bundlers than webpack.
 
-Unfortunatly there are currently some issues related to parcel:
+Unfortunatly there are currently an issue related to parcel:
 
 - No hot-module-replacement for HTML templates ([parcel#943](https://github.com/parcel-bundler/parcel/issues/943))
-- Importing CSS from TypeScript file does not work (See [`fade.component.ts`](./examples/typescript-parcel/src/fade/fade.component.ts))
 
 ## Author
 

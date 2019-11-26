@@ -5,11 +5,17 @@ type PluginOptions = {
   angularGlobal: false | string;
   forceRefresh: boolean;
   preserveState: boolean;
+  angularReference: string;
 };
 
 export default function(
   babel: BabelT,
-  { angularGlobal = false, forceRefresh = true, preserveState = true }: PluginOptions
+  {
+    angularGlobal = false,
+    forceRefresh = true,
+    preserveState = true,
+    angularReference = `require('angular'), angular`,
+  }: PluginOptions
 ) {
   const { types: t, template } = babel;
 
@@ -22,7 +28,6 @@ export default function(
   const registerAngularUse = new Map();
 
   const corePath = 'ng-hot-reload-core';
-  const requireAngular = 'require("angular"), angular';
   const EXPORTS_PREFIX = '__ngHotReload_';
   const INNER_EXPORT_VARIABLE = '__ngHotReload_exports__';
   const ANGULAR_PACKAGE_NAME = 'angular';
@@ -59,7 +64,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
     })();
   }
   return ${INNER_EXPORT_VARIABLE};
-})(${requireAngular});
+})(${angularReference});
 /* babel-plugin-ng-hot-reload end */
 `);
 
@@ -68,10 +73,8 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
       exit(path) {
         // Only apply the hot-module-replacement template when usage of angular
         // is detected
-        if (registerAngularUse.has(path)) {
-          // TODO: This doesn't work right now because we need to reapply all
-          // the imports and exports which we have removed
-          // return;
+        if (!registerAngularUse.has(path)) {
+          return;
         }
 
         const {
@@ -79,10 +82,10 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
         } = path;
 
         // Apply all transformations
-        // state.pathsToRemove.forEach((pathToRemove: any) => pathToRemove.remove());
-        // state.pathsToReplace.forEach((replacer, pathToReplace) =>
-        //   pathToReplace.replaceWith(replacer)
-        // );
+        state.pathsToRemove.forEach((pathToRemove: any) => pathToRemove.remove());
+        state.pathsToReplace.forEach((replacer, pathToReplace) =>
+          pathToReplace.replaceWith(replacer)
+        );
 
         // Adds a return statement to the inner wrapper function which
         // contains the exports from the module
@@ -156,7 +159,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
 
       // Add import to the list and remove it for now
       state.topLevelImports.add(node);
-      path.remove();
+      state.pathsToRemove.add(path);
     },
 
     ExportNamedDeclaration(path) {
@@ -180,7 +183,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
           state.topLevelExports.set(identifier.name, identifier);
         }
         // Replace the export declaration with the actual declaration
-        path.replaceWith(declaration);
+        state.pathsToReplace.set(path, declaration);
       } else {
         // Export specifier
         // e.g:
@@ -194,7 +197,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
           });
         }
         // Remove the export
-        path.remove();
+        state.pathsToRemove.add(path);
       }
     },
 
@@ -214,7 +217,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
         // export default obj.foo;
         state.topLevelExports.set('default', declaration.node);
         // Remove the default export
-        path.remove();
+        state.pathsToRemove.add(path);
       } else {
         // If we have a declaration in the default export we have to get the
         // identifier through the `id` property
@@ -222,7 +225,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
         // export default class Foo {}
         state.topLevelExports.set('default', declaration.get('id').node);
         // Replace the export declaration with the actual declaration
-        path.replaceWith(declaration);
+        state.pathsToReplace.set(path, declaration);
       }
     },
   };

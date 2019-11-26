@@ -1,5 +1,4 @@
-// TODO: Cannot import css file here
-// import './fade.css';
+import './fade.css';
 
 class FadeController {
   visible = false;

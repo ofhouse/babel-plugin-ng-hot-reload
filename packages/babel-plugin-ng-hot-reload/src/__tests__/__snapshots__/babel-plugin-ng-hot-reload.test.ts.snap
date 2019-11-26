@@ -1,8 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ngHotReloadPlugin No code transformation should be done when no angular reference is present 1`] = `
+Object {
+  Symbol(jest-snapshot-serializer-raw): "const foo = 'bar';
+const bar = 'foo';
+export { foo, bar as bar2, foo as default };",
+}
+`;
+
 exports[`ngHotReloadPlugin default export class 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "const {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {
   __ngHotReload_default
 } = function (__ngHotReloadLoaderAngularGlobal) {
   var __ngHotReload_exports__;
@@ -41,7 +51,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}(require(\\"angular\\"), angular);
+}(require('angular'), angular);
 
 export { __ngHotReload_default as default };",
 }
@@ -49,7 +59,9 @@ export { __ngHotReload_default as default };",
 
 exports[`ngHotReloadPlugin default export identifier 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "const {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {
   __ngHotReload_default
 } = function (__ngHotReloadLoaderAngularGlobal) {
   var __ngHotReload_exports__;
@@ -84,7 +96,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}(require(\\"angular\\"), angular);
+}(require('angular'), angular);
 
 export { __ngHotReload_default as default };",
 }
@@ -92,7 +104,9 @@ export { __ngHotReload_default as default };",
 
 exports[`ngHotReloadPlugin default export member expression 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "const {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {
   __ngHotReload_default
 } = function (__ngHotReloadLoaderAngularGlobal) {
   var __ngHotReload_exports__;
@@ -129,7 +143,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}(require(\\"angular\\"), angular);
+}(require('angular'), angular);
 
 export { __ngHotReload_default as default };",
 }
@@ -137,7 +151,9 @@ export { __ngHotReload_default as default };",
 
 exports[`ngHotReloadPlugin named export class declaration 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "const {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {
   __ngHotReload_Foo
 } = function (__ngHotReloadLoaderAngularGlobal) {
   var __ngHotReload_exports__;
@@ -174,7 +190,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}(require(\\"angular\\"), angular);
+}(require('angular'), angular);
 
 export { __ngHotReload_Foo as Foo };",
 }
@@ -182,7 +198,9 @@ export { __ngHotReload_Foo as Foo };",
 
 exports[`ngHotReloadPlugin named export variable declaration 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "const {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {
   __ngHotReload_foo,
   __ngHotReload_bar
 } = function (__ngHotReloadLoaderAngularGlobal) {
@@ -220,7 +238,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}(require(\\"angular\\"), angular);
+}(require('angular'), angular);
 
 export { __ngHotReload_foo as foo, __ngHotReload_bar as bar };",
 }
@@ -228,7 +246,9 @@ export { __ngHotReload_foo as foo, __ngHotReload_bar as bar };",
 
 exports[`ngHotReloadPlugin named exports 1`] = `
 Object {
-  Symbol(jest-snapshot-serializer-raw): "const {
+  Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
+
+const {
   __ngHotReload_foo,
   __ngHotReload_bar2,
   __ngHotReload_default
@@ -268,7 +288,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}(require(\\"angular\\"), angular);
+}(require('angular'), angular);
 
 export { __ngHotReload_foo as foo, __ngHotReload_bar2 as bar2, __ngHotReload_default as default };",
 }
