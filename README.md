@@ -124,7 +124,7 @@ For an example check out the [Webpack / TypeScript example](./examples/typescrip
 Since this plugin only requires babel, you can use every build tool which supports hot-module-replacement.<br />
 You can check out the [Parcel / TypeScript example](./examples/typescript-parcel/) to see how it works with other bundlers than webpack.
 
-Unfortunatly there are currently an issue related to parcel:
+Unfortunatly there is currently an issue related to parcel:
 
 - No hot-module-replacement for HTML templates ([parcel#943](https://github.com/parcel-bundler/parcel/issues/943))
 
