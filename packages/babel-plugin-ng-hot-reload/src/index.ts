@@ -22,12 +22,12 @@ export default function(
   const corePath = 'ng-hot-reload-core';
   const requireAngular = '(require("angular"), angular)';
   const EXPORTS_PREFIX = '__ngHotReload_';
-  const INNER_EXPORT_VARIBALE = '__ngHotReload_exports__';
+  const INNER_EXPORT_VARIABLE = '__ngHotReload_exports__';
 
   const buildHotReloadTemplate = template(`
 /* babel-plugin-ng-hot-reload */
 const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
-  var ${INNER_EXPORT_VARIBALE};
+  var ${INNER_EXPORT_VARIABLE};
   var angular = module.hot ? (function() {
     var loader = require(${JSON.stringify(corePath)});
     return loader.decorateAngular({
@@ -38,7 +38,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
   })() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    ${INNER_EXPORT_VARIBALE} = (function() {
+    ${INNER_EXPORT_VARIABLE} = (function() {
       /* babel-plugin-ng-hot-reload end*/
       %%source%%
       /* babel-plugin-ng-hot-reload */
@@ -55,7 +55,7 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
       }
     })();
   }
-  return ${INNER_EXPORT_VARIBALE};
+  return ${INNER_EXPORT_VARIABLE};
 })(${requireAngular});
 /* babel-plugin-ng-hot-reload end */
 `);
