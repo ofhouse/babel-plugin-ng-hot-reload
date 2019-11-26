@@ -9,5 +9,12 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['babel-plugin-ng-hot-reload'],
+  plugins: [
+    [
+      'babel-plugin-ng-hot-reload',
+      {
+        angularGlobal: 'angular',
+      },
+    ],
+  ],
 };

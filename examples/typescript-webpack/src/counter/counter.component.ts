@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import template from './counter.html';
 
 class CounterController {

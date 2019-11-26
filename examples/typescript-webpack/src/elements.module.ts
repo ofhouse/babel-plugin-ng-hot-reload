@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import { ButtonComponent, ButtonComponentName } from './elements/button.component';
 import { DateComponent, DateComponentName } from './elements/date.component';
 

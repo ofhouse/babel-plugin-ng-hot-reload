@@ -17,6 +17,8 @@ describe('ngHotReloadPlugin', () => {
   test('default export identifier', () => {
     expect(
       transform(`
+      import * as angular from 'angular';
+
       const foo = 'bar';
       export default foo;
     `)
@@ -26,6 +28,8 @@ describe('ngHotReloadPlugin', () => {
   test('default export member expression', () => {
     expect(
       transform(`
+      import * as angular from 'angular';
+
       const obj = {
         foo: 'bar'
       };
@@ -37,6 +41,8 @@ describe('ngHotReloadPlugin', () => {
   test('default export class', () => {
     expect(
       transform(`
+      import * as angular from 'angular';
+
       export default class Test {
         constructor() {}
       }
@@ -47,6 +53,8 @@ describe('ngHotReloadPlugin', () => {
   test('named export class declaration', () => {
     expect(
       transform(`
+      import * as angular from 'angular';
+
       export class Foo {};
     `)
     ).toMatchSnapshot();
@@ -55,6 +63,8 @@ describe('ngHotReloadPlugin', () => {
   test('named export variable declaration', () => {
     expect(
       transform(`
+      import * as angular from 'angular';
+
       export const foo = 'bar',
                    bar = 'foo';
     `)
@@ -64,6 +74,8 @@ describe('ngHotReloadPlugin', () => {
   test('named exports', () => {
     expect(
       transform(`
+      import * as angular from 'angular';
+
       const foo = 'bar';
       const bar = 'foo';
       export { foo, bar as bar2, foo as default };

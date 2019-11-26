@@ -41,7 +41,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}((require(\\"angular\\"), angular));
+}(require(\\"angular\\"), angular);
 
 export { __ngHotReload_default as default };",
 }
@@ -84,7 +84,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}((require(\\"angular\\"), angular));
+}(require(\\"angular\\"), angular);
 
 export { __ngHotReload_default as default };",
 }
@@ -129,7 +129,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}((require(\\"angular\\"), angular));
+}(require(\\"angular\\"), angular);
 
 export { __ngHotReload_default as default };",
 }
@@ -174,7 +174,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}((require(\\"angular\\"), angular));
+}(require(\\"angular\\"), angular);
 
 export { __ngHotReload_Foo as Foo };",
 }
@@ -220,7 +220,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}((require(\\"angular\\"), angular));
+}(require(\\"angular\\"), angular);
 
 export { __ngHotReload_foo as foo, __ngHotReload_bar as bar };",
 }
@@ -268,7 +268,7 @@ Object {
   }
 
   return __ngHotReload_exports__;
-}((require(\\"angular\\"), angular));
+}(require(\\"angular\\"), angular);
 
 export { __ngHotReload_foo as foo, __ngHotReload_bar2 as bar2, __ngHotReload_default as default };",
 }

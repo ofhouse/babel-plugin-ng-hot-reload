@@ -12,7 +12,12 @@ module.exports = {
   ],
   plugins: [
     ['angularjs-annotate', { explicitOnly: true }],
-    'babel-plugin-ng-hot-reload',
+    [
+      'babel-plugin-ng-hot-reload',
+      {
+        angularGlobal: 'angular',
+      },
+    ],
     '@babel/plugin-proposal-class-properties',
   ],
 };

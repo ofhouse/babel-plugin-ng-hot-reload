@@ -1,5 +1,3 @@
-import 'angular/angular.js';
-import '@uirouter/angularjs';
 import './app.module';
 import './counter/counter.component';
 import './hello/hello.directive';

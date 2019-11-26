@@ -70,6 +70,41 @@ module.exports = {
 
 For an example check out the [Webpack / Javascript example](./examples/javascript-webpack/).
 
+### Use AngularJS as global variable
+
+Per default the plugin looks for imports of `'angular'`-package and only adds the hot-module-reload code to this modules.
+However in some environments angular is used as a global variable without beeing imported, so the plugin has a `angularGlobal` setting which supports the use of angular as a global variable:
+
+```js
+// Default mode: Add hot-module-reload only to files which import 'angular'
+// app.module.js
+import * as angular from 'angular'; // or
+import angular from 'angular'; // or
+import 'angular';
+
+angular.module('hot-reload-demo', []);
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Setting angularGlobal option: Use `angular` as global variable
+// .babelrc.json
+module.exports = {
+  plugins: [
+    [
+      'babel-plugin-ng-hot-reload',
+      {
+        angularGlobal: 'angular', // Name of the global angular variable
+      },
+    ],
+  ],
+};
+
+// app.module.js
+angular.module('hot-reload-demo', []);
+```
+
+For an example check out the [Webpack / Javascript example](./examples/javascript-webpack/).
+
 ### Use together with `ngAnnotate`
 
 When you are using this plugin together with [`babel-plugin-angularjs-annotate`](https://github.com/schmod/babel-plugin-angularjs-annotate) make sure that the ngAnnotate plugin is added before this plugin in your `.babelrc.js`:

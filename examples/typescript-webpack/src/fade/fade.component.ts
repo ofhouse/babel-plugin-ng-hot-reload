@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import './fade.css';
 
 class FadeController {
