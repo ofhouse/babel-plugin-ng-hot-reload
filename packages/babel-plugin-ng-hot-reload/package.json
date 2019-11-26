@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-ng-hot-reload",
-  "version": "2.1.0-alpha004",
+  "version": "2.1.0-alpha005",
   "main": "dist/index.js",
   "author": {
     "name": "Felix Haus",
