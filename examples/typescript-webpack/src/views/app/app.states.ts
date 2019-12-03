@@ -9,7 +9,6 @@ import { HomeViewComponentName } from '../home/home.component';
 
 export const appState: Ng1StateDeclaration = {
   name: 'app',
-  redirectTo: 'home',
   component: AppComponentName,
 };
 
