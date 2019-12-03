@@ -119,6 +119,12 @@ module.exports = {
 
 For an example check out the [Webpack / TypeScript example](./examples/typescript-webpack/).
 
+### Lazy-loading with `oclazyload`
+
+This plugin also works with the lazy-loading library [ocLazyLoad](https://oclazyload.readme.io/).
+
+For an example check out the [Webpack / TypeScript example](./examples/typescript-webpack/).
+
 ### Known issues with parcel
 
 Since this plugin only requires babel, you can use every build tool which supports hot-module-replacement.<br />

@@ -1,5 +1,3 @@
-import * as angular from 'angular';
-
 import template from './counter.html';
 
 class CounterController {
@@ -14,7 +12,9 @@ class CounterController {
   }
 }
 
-angular.module('hot-reload-demo').component('counter', {
+export const CounterComponent = {
   controller: CounterController,
   template,
-});
+};
+
+export const CounterComponentName = 'counter';

@@ -1,27 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>ng1 Hot Reload demo</title>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <title>ng1 Hot Reload demo (TypeScript)</title>
 
-    <style>
-      body {
-        font-family: Arial;
-      }
-    </style>
-    <!-- inject:css -->
-    <!-- endinject -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
   </head>
-  <body ng-app="hot-reload-demo">
-
-    <div class="container">
-      <div ui-view></div>
-    </div>
-
-    <!-- inject:js -->
-    <!-- endinject -->
-
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <body ng-app="hotReloadDemo">
+    <div ui-view></div>
   </body>
 </html>

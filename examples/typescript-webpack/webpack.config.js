@@ -6,12 +6,12 @@ const path = require('path');
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
-var entry = ['./src/index.ts'];
+let entry = ['./src/bootstrap.ts'];
 
 if (mode === 'development') {
   entry = [
     `${require.resolve('webpack-dev-server/client')}?/`,
-    require.resolve('webpack/hot/dev-server'),
+    require.resolve('webpack/hot/only-dev-server'),
   ].concat(entry);
 }
 

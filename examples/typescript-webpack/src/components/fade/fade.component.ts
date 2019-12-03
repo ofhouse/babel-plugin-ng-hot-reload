@@ -1,12 +1,10 @@
-import * as angular from 'angular';
-
 import './fade.css';
 
 class FadeController {
   visible = false;
 }
 
-angular.module('hot-reload-demo').component('fade', {
+export const FadeComponent = {
   controller: FadeController,
   template: `
     <div class="fade-wrapper">
@@ -18,4 +16,6 @@ angular.module('hot-reload-demo').component('fade', {
       </button>
      </div>
     `,
-});
+};
+
+export const FadeComponentName = 'fade';

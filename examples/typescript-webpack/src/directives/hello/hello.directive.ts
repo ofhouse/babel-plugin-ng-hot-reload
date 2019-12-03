@@ -1,13 +1,13 @@
-import * as angular from 'angular';
-
 import template from './hello.html';
 import { HelloController } from './hello.controller';
 
-angular.module('hot-reload-demo').directive('hello', () => {
+export const helloDirective = () => {
   return {
     template,
     scope: true,
     controller: HelloController,
     controllerAs: 'vm',
   };
-});
+};
+
+export const helloDirectiveName = 'hello';
