@@ -1,3 +1,8 @@
+/**
+ * Note: Please make sure to only use syntax which is compatible with IE11 here
+ *       because the transformation runs after @babel/env!
+ */
+
 import * as Babel from '@babel/core';
 
 type BabelT = typeof Babel;
@@ -30,12 +35,13 @@ export default function(
 
   const corePath = 'ng-hot-reload-core';
   const EXPORTS_PREFIX = '__ngHotReload_';
-  const INNER_EXPORT_VARIABLE = '__ngHotReload_exports__';
+  const OUTER_EXPORT_VARIABLE = '__ngHotReload_outer_exports__';
+  const INNER_EXPORT_VARIABLE = '__ngHotReload_inner_exports__';
   const ANGULAR_PACKAGE_NAME = 'angular';
 
   const buildHotReloadTemplate = template(`
 /* babel-plugin-ng-hot-reload */
-const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
+var ${OUTER_EXPORT_VARIABLE} = (function(__ngHotReloadLoaderAngularGlobal) {
   var ${INNER_EXPORT_VARIABLE};
   var angular = module.hot ? (function() {
     var loader = require(${JSON.stringify(corePath)});
@@ -107,10 +113,13 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
         //
         // Added to outer wrapper:
         // --
-        // const { __export_default, __export_namedExport } = (function() {...})();
+        // var OUTER_EXPORT_VARIABLE = (function() {...})();
         //
         // Appended to template:
         // --
+        // var __export_default = OUTER_EXPORT_VARIABLE.__export_default,
+        //     __export_namedExport = OUTER_EXPORT_VARIABLE.__export_namedExport;
+        //
         // export {
         //   __export_default as default,
         //  __export_namedExport as namedExport
@@ -124,7 +133,10 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
           moduleExports.push(t.objectProperty(t.identifier(identifierKey), value));
           // Properties for the outer const destrcutor
           extractedExports.push(
-            t.objectProperty(t.identifier(identifierKey), t.identifier(identifierKey), false, true)
+            t.variableDeclarator(
+              t.identifier(identifierKey),
+              t.memberExpression(t.identifier(OUTER_EXPORT_VARIABLE), t.identifier(identifierKey))
+            )
           );
           // Restore the topLevelexports
           topLevelExports.push(t.exportSpecifier(t.identifier(identifierKey), t.identifier(key)));
@@ -136,12 +148,12 @@ const %%extractedExports%% = (function(__ngHotReloadLoaderAngularGlobal) {
         const hotReloadTemplateAst = buildHotReloadTemplate({
           source: sourceBody,
           exports: exportsAsReturnStatement,
-          extractedExports: t.objectPattern(extractedExports),
         });
 
         const finalBody = [
           ...state.topLevelImports.values(),
           hotReloadTemplateAst,
+          extractedExports.length > 0 ? t.variableDeclaration('var', extractedExports) : undefined,
           topLevelExports.length > 0 ? t.exportNamedDeclaration(null, topLevelExports) : undefined,
           ...state.topLevelExportModule.values(),
         ].filter(Boolean);

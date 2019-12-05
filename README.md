@@ -134,6 +134,10 @@ Unfortunatly there is currently an issue related to parcel:
 
 - No hot-module-replacement for HTML templates ([parcel#943](https://github.com/parcel-bundler/parcel/issues/943))
 
+### Browser-compability
+
+The plugin is compatible with the latest versions of Chrome, Firefox and IE11.
+
 ## Author
 
 <!-- prettier-ignore-start -->

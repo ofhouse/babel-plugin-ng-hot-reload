@@ -4,8 +4,8 @@ exports[`ngHotReloadPlugin ExportAllDeclaration 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -18,7 +18,7 @@ const {} = function (__ngHotReloadLoaderAngularGlobal) {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       return {};
     }();
   } finally {
@@ -33,7 +33,7 @@ const {} = function (__ngHotReloadLoaderAngularGlobal) {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
 export * from 'foo';",
@@ -44,8 +44,8 @@ exports[`ngHotReloadPlugin Named export with source 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -58,7 +58,7 @@ const {} = function (__ngHotReloadLoaderAngularGlobal) {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       return {};
     }();
   } finally {
@@ -73,7 +73,7 @@ const {} = function (__ngHotReloadLoaderAngularGlobal) {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
 export { foo } from 'bar';",
@@ -92,10 +92,8 @@ exports[`ngHotReloadPlugin default export class 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {
-  __ngHotReload_default
-} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -108,7 +106,7 @@ const {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       class Test {
         constructor() {}
 
@@ -130,9 +128,10 @@ const {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
+var __ngHotReload_default = __ngHotReload_outer_exports__.__ngHotReload_default;
 export { __ngHotReload_default as default };",
 }
 `;
@@ -141,10 +140,8 @@ exports[`ngHotReloadPlugin default export identifier 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {
-  __ngHotReload_default
-} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -157,7 +154,7 @@ const {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       const foo = 'bar';
       return {
         __ngHotReload_default: foo
@@ -175,9 +172,10 @@ const {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
+var __ngHotReload_default = __ngHotReload_outer_exports__.__ngHotReload_default;
 export { __ngHotReload_default as default };",
 }
 `;
@@ -186,10 +184,8 @@ exports[`ngHotReloadPlugin default export member expression 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {
-  __ngHotReload_default
-} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -202,7 +198,7 @@ const {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       const obj = {
         foo: 'bar'
       };
@@ -222,9 +218,10 @@ const {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
+var __ngHotReload_default = __ngHotReload_outer_exports__.__ngHotReload_default;
 export { __ngHotReload_default as default };",
 }
 `;
@@ -233,10 +230,8 @@ exports[`ngHotReloadPlugin named export class declaration 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {
-  __ngHotReload_Foo
-} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -249,7 +244,7 @@ const {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       class Foo {}
 
       ;
@@ -269,9 +264,10 @@ const {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
+var __ngHotReload_Foo = __ngHotReload_outer_exports__.__ngHotReload_Foo;
 export { __ngHotReload_Foo as Foo };",
 }
 `;
@@ -280,11 +276,8 @@ exports[`ngHotReloadPlugin named export variable declaration 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {
-  __ngHotReload_foo,
-  __ngHotReload_bar
-} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -297,7 +290,7 @@ const {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       const foo = 'bar',
             bar = 'foo';
       return {
@@ -317,9 +310,11 @@ const {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
+var __ngHotReload_foo = __ngHotReload_outer_exports__.__ngHotReload_foo,
+    __ngHotReload_bar = __ngHotReload_outer_exports__.__ngHotReload_bar;
 export { __ngHotReload_foo as foo, __ngHotReload_bar as bar };",
 }
 `;
@@ -328,12 +323,8 @@ exports[`ngHotReloadPlugin named exports 1`] = `
 Object {
   Symbol(jest-snapshot-serializer-raw): "import * as angular from 'angular';
 
-const {
-  __ngHotReload_foo,
-  __ngHotReload_bar2,
-  __ngHotReload_default
-} = function (__ngHotReloadLoaderAngularGlobal) {
-  var __ngHotReload_exports__;
+var __ngHotReload_outer_exports__ = function (__ngHotReloadLoaderAngularGlobal) {
+  var __ngHotReload_inner_exports__;
 
   var angular = module.hot ? function () {
     var loader = require(\\"ng-hot-reload-core\\");
@@ -346,7 +337,7 @@ const {
   }() : __ngHotReloadLoaderAngularGlobal;
 
   try {
-    __ngHotReload_exports__ = function () {
+    __ngHotReload_inner_exports__ = function () {
       const foo = 'bar';
       const bar = 'foo';
       return {
@@ -367,9 +358,12 @@ const {
     })();
   }
 
-  return __ngHotReload_exports__;
+  return __ngHotReload_inner_exports__;
 }(require('angular'), angular);
 
+var __ngHotReload_foo = __ngHotReload_outer_exports__.__ngHotReload_foo,
+    __ngHotReload_bar2 = __ngHotReload_outer_exports__.__ngHotReload_bar2,
+    __ngHotReload_default = __ngHotReload_outer_exports__.__ngHotReload_default;
 export { __ngHotReload_foo as foo, __ngHotReload_bar2 as bar2, __ngHotReload_default as default };",
 }
 `;
