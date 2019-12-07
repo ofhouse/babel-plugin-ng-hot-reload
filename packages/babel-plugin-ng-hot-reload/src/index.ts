@@ -97,7 +97,7 @@ var ${OUTER_EXPORT_VARIABLE} = (function(__ngHotReloadLoaderAngularGlobal) {
         // Adds a return statement to the inner wrapper function which
         // contains the exports from the module
         // Also adds an destructor to the outside of the wrapper to make the
-        // exports from inside the wrapper avaiable in global scope
+        // exports from inside the wrapper available in global scope
         //
         // export default Controller;
         // export const namedExport
@@ -131,7 +131,7 @@ var ${OUTER_EXPORT_VARIABLE} = (function(__ngHotReloadLoaderAngularGlobal) {
           const identifierKey = `${EXPORTS_PREFIX}${key}`;
           // Properties of the return statement
           moduleExports.push(t.objectProperty(t.identifier(identifierKey), value));
-          // Properties for the outer const destrcutor
+          // Properties for the outer const destructor
           extractedExports.push(
             t.variableDeclarator(
               t.identifier(identifierKey),
@@ -181,7 +181,7 @@ var ${OUTER_EXPORT_VARIABLE} = (function(__ngHotReloadLoaderAngularGlobal) {
       // e.g:
       // export { foo } from 'bar';
       if (path.node.source) {
-        // Same behaviour as ExportAllDeclaration
+        // Same behavior as ExportAllDeclaration
         state.topLevelExportModule.add(path.node);
         state.pathsToRemove.add(path);
         return;
