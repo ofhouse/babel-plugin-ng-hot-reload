@@ -12,7 +12,7 @@ module.exports = {
   ],
   plugins: [
     '@babel/plugin-transform-runtime',
-    ['angularjs-annotate', { explicitOnly: true }],
+    ['babel-plugin-angularjs-annotate', { explicitOnly: true }],
     'babel-plugin-ng-hot-reload',
     '@babel/plugin-proposal-class-properties',
   ],

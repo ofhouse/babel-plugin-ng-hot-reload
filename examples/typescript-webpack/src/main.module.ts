@@ -21,7 +21,8 @@ mainModule.config(
     // Do not use hashbang routing when history is avaiable
     // https://stackoverflow.com/a/4710239/831465
     if (window.history && window.history.pushState) {
-      $locationProvider.html5Mode(true);
+      // TODO: Does not work on CodeSandbox
+      // $locationProvider.html5Mode(true);
     }
 
     // If the user enters a URL that doesn't match any known URL (state),

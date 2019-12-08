@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html --open"
   },
   "dependencies": {
     "@types/angular": "^1.6.56",
@@ -20,7 +20,7 @@
     "@babel/preset-typescript": "^7.7.4",
     "babel-plugin-angularjs-annotate": "^0.10.0",
     "babel-plugin-ng-hot-reload": "^2.1.0-alpha",
-    "parcel-bundler": "^1.12.4",
+    "parcel-bundler": "^1.6.1",
     "typescript": "^3.7.2"
   }
 }
