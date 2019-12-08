@@ -11,7 +11,7 @@ module.exports = {
     '@babel/preset-typescript',
   ],
   plugins: [
-    ['angularjs-annotate', { explicitOnly: true }],
+    ['babel-plugin-angularjs-annotate', { explicitOnly: true }],
     [
       'babel-plugin-ng-hot-reload',
       {

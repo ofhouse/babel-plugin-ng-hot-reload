@@ -16,6 +16,7 @@ new WebpackDevServer(webpack(config), {
   https: protocol === 'https',
   historyApiFallback: true,
   disableHostCheck: true,
+  open: true,
 }).listen(PORT, host, function(err, result) {
   if (err) {
     return console.log(err);

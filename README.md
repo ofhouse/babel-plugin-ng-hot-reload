@@ -45,7 +45,7 @@ module.exports = {
 | Option             | Default                                  | Description                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------ | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `angularGlobal`    | `false` (false or string)                | Define whether angular is provided as global variable. Set to `'angular'` when `angular` is your global variable.                                                                                                                                                                                                                                                            |
-| `forceRefresh`     | `true` (boolean)                         | Whether to reload window automatically when a change in source files can't be hot-reloaded. Note that Webpack DevServer also has its own option hotOnly, which should also be configured correctly to get the behavior you want when hot reloading fails.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options))                              |
+| `forceRefresh`     | `true` (boolean)                         | Whether to reload window automatically when a change in source files can't be hot-reloaded. Note that Webpack DevServer also has its own option hotOnly, which should also be configured correctly to get the behavior you want when hot reloading fails.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options))                               |
 | `preserveState`    | `true` (boolean)                         | If true, the library attempts to preserve some state in scope and controller instances when they are reloaded. Preserving state is an experimental feature and quite "hackish" so it may cause problems in some cases. Setting this to `false` might help if you run into weird errors.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options)) |
 | `angularReference` | `"require('angular'), angular"` (string) | JavaScript expression that will be evaluated to get a reference to angular.<br />([ng-hot-reload option](https://github.com/noppa/ng-hot-reload#client-options))                                                                                                                                                                                                             |
 
@@ -109,13 +109,7 @@ For an example check out the [Webpack / Javascript example](./examples/javascrip
 
 ### Use together with `ngAnnotate`
 
-When you are using this plugin together with [`babel-plugin-angularjs-annotate`](https://github.com/schmod/babel-plugin-angularjs-annotate) make sure that the ngAnnotate plugin is added before this plugin in your `.babelrc.js`:
-
-```js
-module.exports = {
-  plugins: ['angularjs-annotate', 'babel-plugin-ng-hot-reload'],
-};
-```
+You can also use the plugin together with [`babel-plugin-angularjs-annotate`](https://github.com/schmod/babel-plugin-angularjs-annotate).
 
 For an example check out the [Webpack / TypeScript example](./examples/typescript-webpack/).
 
