@@ -6,5 +6,8 @@
   "workspaces": [
     "packages/*",
     "examples/*"
-  ]
+  ],
+  "scripts": {
+    "postinstall": "yarn --cwd packages/babel-plugin-ng-hot-reload build"
+  }
 }
