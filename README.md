@@ -1,4 +1,4 @@
-# 🔥 babel-plugin-ng-hot-reload
+# 🔥 babel-plugin-ng-hot-reload [![Build status](https://travis-ci.org/ofhouse/babel-plugin-ng-hot-reload.svg?branch=master)](https://travis-ci.org/ofhouse/babel-plugin-ng-hot-reload)
 
 A babel plugin which enables hot module replacement in AngularJS applications.<br />
 The plugin is based on the [ng-hot-reload](https://github.com/noppa/ng-hot-reload) webpack loader but is rewritten as babel plugin so that it is compatible with es-module syntax and every bundler which supports the hot-replacement API (e.g. [webpack](https://webpack.js.org/) or [parcel](https://parceljs.org/)).
