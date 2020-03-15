@@ -14,13 +14,13 @@
     "angular-animate": "^1.7.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
-    "@babel/preset-typescript": "^7.7.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
     "babel-plugin-angularjs-annotate": "^0.10.0",
     "babel-plugin-ng-hot-reload": "^2.1.0",
     "parcel-bundler": "^1.6.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.8.3"
   }
 }
