@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepack": "cp ../../README.md ../../LICENSE ./ && tsc --p tsconfig.build.json",
+    "prepack": "cp ../README.md ../LICENSE ./ && tsc --p tsconfig.build.json",
     "postpack": "rm ./README.md ./LICENSE",
     "build": "tsc --p tsconfig.build.json",
     "watch": "tsc -w",

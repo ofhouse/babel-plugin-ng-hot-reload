@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "workspaces": [
-    "packages/*",
+    "lib",
     "examples/*"
   ],
   "scripts": {
-    "postinstall": "yarn --cwd packages/babel-plugin-ng-hot-reload build"
+    "postinstall": "yarn --cwd lib build"
   }
 }
