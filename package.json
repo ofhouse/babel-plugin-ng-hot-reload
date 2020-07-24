@@ -9,6 +9,10 @@
   ],
   "scripts": {
     "postinstall": "yarn --cwd lib build",
-    "test": "yarn --cwd lib test"
+    "test": "yarn --cwd lib test",
+    "prettier": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
   }
 }

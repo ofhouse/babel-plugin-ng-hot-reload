@@ -13,7 +13,7 @@ type PluginOptions = {
   angularReference: string;
 };
 
-export default function(
+export default function (
   babel: BabelT,
   {
     angularGlobal = false,
@@ -167,7 +167,7 @@ var ${OUTER_EXPORT_VARIABLE} = (function(__ngHotReloadLoaderAngularGlobal) {
 
       // Check if the import is angular
       if (node.source.value === ANGULAR_PACKAGE_NAME) {
-        const parentProgram = path.findParent(path => path.isProgram());
+        const parentProgram = path.findParent((path) => path.isProgram());
         registerAngularUse.set(parentProgram, true);
       }
 
@@ -195,7 +195,7 @@ var ${OUTER_EXPORT_VARIABLE} = (function(__ngHotReloadLoaderAngularGlobal) {
           // export const foo = 'bar',
           //              bar = 'foo';
           const { declarations } = declaration.node;
-          declarations.forEach(declaration => {
+          declarations.forEach((declaration) => {
             const identifier = declaration.id;
             state.topLevelExports.set(identifier.name, identifier);
           });
@@ -262,10 +262,10 @@ var ${OUTER_EXPORT_VARIABLE} = (function(__ngHotReloadLoaderAngularGlobal) {
 
   // When angular is used as global variable check for usage of the identifier
   if (angularGlobal) {
-    visitor['Identifier'] = function(path) {
+    visitor['Identifier'] = function (path) {
       const { node } = path;
       if (node.name === angularGlobal) {
-        const parentProgram = path.findParent(path => path.isProgram());
+        const parentProgram = path.findParent((path) => path.isProgram());
         registerAngularUse.set(parentProgram, true);
       }
     };

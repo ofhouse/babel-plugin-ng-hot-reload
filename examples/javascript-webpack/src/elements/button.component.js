@@ -1,7 +1,4 @@
-
-class ButtonComponentController {
-
-}
+class ButtonComponentController {}
 
 Object.assign(ButtonComponentController, {
   controller: ButtonComponentController,

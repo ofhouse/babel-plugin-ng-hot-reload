@@ -1,6 +1,4 @@
-class DateComponentController {
-
-}
+class DateComponentController {}
 
 Object.assign(DateComponentController, {
   controller: DateComponentController,

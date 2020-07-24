@@ -25,7 +25,7 @@ export const infoFutureState: Ng1StateDeclaration = {
   // the same name as the lazy loaded state
   name: 'info.**',
   url: '/info',
-  lazyLoad: async transition => {
+  lazyLoad: async (transition) => {
     const $ocLazyLoad = transition.injector().get('$ocLazyLoad');
     const lazyModule = await import('../info/info.module');
     return $ocLazyLoad.load(lazyModule.InfoViewModule);
