@@ -1,4 +1,4 @@
-src
-tsconfig.json
-tsconfig.*.json
-jest.config.js
+*
+
+# Only publish the content from dist
+!dist/*
